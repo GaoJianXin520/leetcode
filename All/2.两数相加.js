@@ -72,4 +72,6 @@ console.log(addTwoNumbers2([2,4,3], [5,6,4]));
 console.log(addTwoNumbers2([0], [0]));
 console.log(addTwoNumbers2([9,9,9,9,9,9,9], [9,9,9,9]));
 
+console.log(123)
+
 //ps:javascript没有链表这种结构，上面的方式用数组代替链表实现
