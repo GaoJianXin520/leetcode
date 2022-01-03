@@ -51,28 +51,6 @@
 
  */
 
-
-/**
- * 
- * @param {Array} arr 整数数组
- * @param {Number} target 整数目标值
- */
-function twoSum(arr, target) {
-    let len = arr.length;
-    for (let i = 0; i < len - 1; i++) {
-        for (let j = i + 1; j < len; j++) {
-            if (arr[i] + arr[j] === target) {
-                return [i, j];
-            } 
-        }
-    }
-    throw Error(`该数组中没有两个元素的和为${target}`);
-}
-
-let res1 = twoSum([1, 2, 3, 4, 5], 6);
-console.log(res1);
-
-
 /**
  * 
  * @param {Array} arr 整数数组
