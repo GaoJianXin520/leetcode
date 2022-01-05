@@ -21,53 +21,25 @@
     -109 <= nums[i] <= 109
     -109 <= target <= 109
     只会存在一个有效答案
-
-    class Solution {
-        public int[] twoSum(int[] nums, int target) {
-            int n = nums.length;
-            for (int i = 0; i < n; ++i) {
-                for (int j = i + 1; j < n; ++j) {
-                    if (nums[i] + nums[j] == target) {
-                        return new int[]{i, j};
-                    }
-                }
-            }
-            return new int[0];
-        }
-    }
-
-    class Solution {
-        public int[] twoSum(int[] nums, int target) {
-            Map<Integer, Integer> hashtable = new HashMap<Integer, Integer>();
-            for (int i = 0; i < nums.length; ++i) {
-                if (hashtable.containsKey(target - nums[i])) {
-                    return new int[]{hashtable.get(target - nums[i]), i};
-                }
-                hashtable.put(nums[i], i);
-            }
-            return new int[0];
-        }
-    }
-
  */
 
 /**
- * 
- * @param {Array} arr 整数数组
- * @param {Number} target 整数目标值
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
  */
-function twoSum2(arr, target) {
+ let twoSum = (nums, target) => {
     let map = new Map();
-    for (let i = 0; i < arr.length; i++) {
-        if (map.has(target - arr[i])) {
-            return [map.get(target - arr[i]), i];
-        }
-        map.set(arr[i], i);
+    for (let i = 0; i < nums.length; i++) {
+        if (map.has(target - nums[i])) return [map.get(target - nums[i]), i];
+        map.set(nums[i], i);
     }
-    throw Error(`该数组中没有两个元素的和为${target}`);
+};
+
+let twoSum2 = (nums, target) => {
+    let obj = {};
+    for (let i = 0; i < nums.length; i++) {
+        if (obj.hasOwnProperty(target - nums[i])) return [obj[target - nums[i]], i];
+        obj[nums[i]] = i;
+    }
 }
-
-let res2 = twoSum2([1, 2, 3, 4, 5], 6);
-console.log(res2);
-
-//ps:上面可能会出现整数数组出现多个数值和为目标值的情况，可以用数组的方式把所有出现的结果存起来

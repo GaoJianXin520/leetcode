@@ -22,56 +22,12 @@
 3.  2 阶 + 1 阶
 */
 
-let  climbStairs1 = function(n) {
-    if (n === 1) {
-        return 1;
-    }
-
-    if (n === 2) {
-        return 2;
-    }
-
-    if (n > 2) {
-        return fn(n - 1) + fn(n - 2);
-    }
-}
-
-var climbStairs2 = function(n) {
-    if (n == 1) return 1;
-    if (n == 2) return 2;
-    let result = 0;
-    let pre = 2;
-    let prePre = 1;
-    for (let i = 3; i <= n; ++i) {
-        result = pre + prePre;
-        prePre = pre;
-        pre = result;
-    }
-    return result;
-};
-
-var climbStairs3 = function(n) {
-    const memo = [];
-    memo[1] = 1;
-    memo[2] = 2;
-    for (let i = 3; i <= n; i++) {
-        memo[i] = memo[i - 2] + memo[i - 1];//所以到第n阶台阶可以从第n-2或n-1上来
-    }
-    return memo[n];
-};
-
-//状态压缩
-var climbStairs4 = (n) => {
-    let prev = 1;
-    let cur = 1;
-    for (let i = 2; i < n + 1; i++) {
-        [prev, cur] = [cur, prev + cur]
-        // const temp = cur;   // 暂存上一次的cur
-        // cur = prev + cur;   // 当前的cur = 上上次cur + 上一次cur
-        // prev = temp;        // prev 更新为 上一次的cur
-    }
+/**
+ * @param {number} n
+ * @return {number}
+ */
+let climbStairs = n => {
+    let prev = 1, cur = 1;
+    for (let i = 2; i < n + 1; i++) [prev, cur] = [cur, prev + cur];
     return cur;
 }
-
-let res = fn(10);
-console.log(res);
