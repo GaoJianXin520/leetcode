@@ -23,20 +23,6 @@ Code Now
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-
-var moveZeroes1 = function(nums) {
-    if (nums == null || nums.length == 0) return;        
-
-    let insertPos = 0;
-    nums.forEach(el => {
-        if (el != 0) nums[insertPos++] = el;
-    });
-
-    while (insertPos < nums.length) {
-        nums[insertPos++] = 0;
-    }
-};
-
-var moveZeroes2 = function(nums) {
+var moveZeroes2 = nums => {
     nums.sort((a, b) => b ? 0 : -1);
 };

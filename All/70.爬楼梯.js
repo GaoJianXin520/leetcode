@@ -28,6 +28,8 @@
  */
 let climbStairs = n => {
     let prev = 1, cur = 1;
-    for (let i = 2; i < n + 1; i++) [prev, cur] = [cur, prev + cur];
+    for (let i = 2; i < n + 1; i++) {
+        [prev, cur] = [cur, prev + cur];
+    }
     return cur;
 }
