@@ -47,52 +47,8 @@ nums2.length == n
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-let merge1 = function(nums1, m, nums2, n) {
-    let temp = [];
-    for (let i = 0, idx1 = 0, idx2 = 0; i < m + n; i++) {
-        if (idx1 >= m) {
-            temp[i] = nums2[idx2];
-            idx2++;
-        } else if (idx2 >= n) {
-            temp[i] = nums1[idx1];
-            idx1++;
-        } else if (nums1[idx1] < nums2[idx2]) {
-            temp[i] = nums1[idx1];
-            idx1++;
-        } else {
-            temp[i] = nums2[idx2];
-            idx2++;
-        }
-    }
-
-    for (let i = 0; i < m + n; i++) {
-        nums1[i] = temp[i];
+let merge = (nums1, m, nums2, n) => {
+    while (n > 0) {
+        nums1[m + n - 1] = m < 1 || nums1[m - 1] < nums2[n -1] ? nums2[--n] : nums1[--m];
     }
 }
-
-let merge2 = function(nums1, m, nums2, n) {
-    let k = m + n;
-    for (let index = k - 1, nums1Index = m - 1, nums2Index = n -1; index >= 0; index--) {
-        if (nums1Index < 0) { //num1已经取完，完全取nums2的值即可
-            nums1[index] = num2[num2sIndex--];
-        } else if (nums2Index < 0) { //num2已经取完，完全取nums1的值即可
-            break;
-        } else if (nums1[nums1Index] > nums2[nums2Index]) { //nums1的元素值大于num2，取nums1值
-            nums1[index] = nums1[nums1Index--];
-        } else { //nums2的元素值大于num1，取nums2值
-            nums1[index] = nums2[nums2Index--];
-        }
-    }
-};
-
-var merge3 = function(nums1, m, nums2, n) {
-    while (n > 0) {
-        if (m < 1 || nums2[n - 1] > nums1[m - 1]) {
-            nums1[m + n - 1] = nums2[--n]
-        } else {
-            nums1[m + n - 1] = nums1[--m]
-        }
-
-        //nums1[m + n - 1] = m < 1 || nums2[n - 1] > nums1[m - 1] ? nums2[--n] : nums1[--m];
-    }
-};
