@@ -34,9 +34,17 @@ Code Now
  * @param {number[]} nums
  * @return {number[]}
  */
- let findDisappearedNumbers = nums => {
-    nums.forEach((el, i) => {
-        el > 0 && (nums[Math.abs(el) - 1] *= -1);
-    });
-    return nums.filter(el => el > 0);
+let findDisappearedNumbers = nums => {
+    const n = nums.length;
+    for (const num of nums) {
+        const x = (num - 1) % n;
+        nums[x] += n;
+    }
+    const ret = [];
+    for (const [i, num] of nums.entries()) {
+        if (num <= n) {
+            ret.push(i + 1);
+        }
+    }
+    return ret;
 };
